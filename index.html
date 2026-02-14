@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>🔥 Trending E-Commerce Shop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h2>🔥 Trending E-Commerce Shop</h2>
+</header>
+
+<div class="container">
+  <div class="grid" id="productGrid"></div>
+</div>
+
+<script>
+  const products = [
+    {name:"Premium Saree", price:1499, img:"https://i.imgur.com/1Q9Z1Zm.jpg"},
+    {name:"Stylish Kameez", price:999, img:"https://i.imgur.com/vz3TqK6.jpg"},
+    {name:"Elegant Dress", price:1799, img:"https://i.imgur.com/Qk8J6lH.jpg"},
+    {name:"Casual Shirt", price:699, img:"https://i.imgur.com/UvQk9eR.jpg"}
+  ];
+
+  const grid = document.getElementById("productGrid");
+
+  products.forEach(p => {
+    const card = document.createElement("a");
+    card.className = "card";
+    card.href = `products.html?name=${encodeURIComponent(p.name)}&price=${p.price}&img=${encodeURIComponent(p.img)}`;
+    card.innerHTML = `
+      <img src="${p.img}">
+      <div class="info">
+        <h4>${p.name}</h4>
+        <p class="price">৳ ${p.price}</p>
+        <button>View</button>
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+</script>
+</body>
+</html>
