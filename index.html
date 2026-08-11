@@ -1,43 +1,87 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <title>🔥 Trending E-Commerce Shop</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>M/S EVA FABRICS</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;color:#171717;background:#fff}
+.top{background:#111;color:#fff;text-align:center;padding:9px;font-size:13px}
+header{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid #eee}
+.nav{max-width:1150px;margin:auto;padding:16px 18px;display:flex;align-items:center}.logo{font-weight:800;font-size:20px;letter-spacing:.5px}.logo span{color:#b48650}.links{margin-left:auto;display:flex;gap:22px;font-size:14px}
+.hero{background:linear-gradient(120deg,#f2eee7,#fff);padding:55px 18px}.heroIn{max-width:1150px;margin:auto;display:grid;grid-template-columns:1fr .8fr;gap:35px;align-items:center}
+.eyebrow{color:#b48650;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase}h1{font-size:clamp(40px,6vw,68px);line-height:1;margin:12px 0}p{line-height:1.7;color:#666}.heroBox{height:310px;border-radius:14px;background:linear-gradient(135deg,#d6c4ac,#faf8f4,#b29470);display:flex;align-items:end;padding:22px}.heroBox div{background:#fff;padding:16px;border-radius:8px}
+.wrap{max-width:1150px;margin:auto;padding:55px 18px}.head{margin-bottom:25px}.head h2{margin:5px 0;font-size:30px}.cats{display:flex;gap:8px;overflow:auto;margin-bottom:20px}.cat{border:1px solid #ddd;background:#fff;border-radius:20px;padding:9px 15px;white-space:nowrap}.cat.active{background:#111;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{border:1px solid #e8e8e8;background:#fff}.photo{height:245px;background:#eee;overflow:hidden}.photo img{width:100%;height:100%;object-fit:cover;display:block}.placeholder{height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#ddd2c4,#f8f5f0,#bca183);font-weight:800;color:#fff;letter-spacing:1px}.info{padding:15px}.tag{font-size:10px;color:#b48650;font-weight:700}.name{font-weight:700;font-size:16px;margin:6px 0}.price{font-weight:800}.min{font-size:12px;color:#777;margin:7px 0 13px}.btn{width:100%;border:0;background:#111;color:#fff;padding:11px;border-radius:4px;font-weight:700}
+.about{background:#f7f7f5}.aboutIn{max-width:1150px;margin:auto;padding:55px 18px;display:grid;grid-template-columns:1fr 1fr;gap:35px}.features{display:grid;grid-template-columns:1fr 1fr;gap:10px}.feature{background:#fff;padding:18px;border:1px solid #eee}.feature b{display:block;margin-bottom:5px}
+footer{background:#111;color:#fff}.foot{max-width:1150px;margin:auto;padding:40px 18px}.foot p{color:#aaa}
+.modal{position:fixed;inset:0;background:#0008;display:none;align-items:center;justify-content:center;padding:15px;z-index:30}.modal.show{display:flex}.box{background:#fff;width:min(540px,100%);max-height:92vh;overflow:auto;border-radius:10px;padding:22px}.close{float:right;border:0;border-radius:50%;width:32px;height:32px}.form{display:grid;gap:11px;margin-top:18px}.form label{font-size:13px;font-weight:700}.form input,.form textarea{padding:11px;border:1px solid #ddd;border-radius:5px;font:inherit}.note{background:#fff5e5;padding:11px;font-size:13px;margin-top:10px}
+@media(max-width:800px){.heroIn,.aboutIn{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.links{display:none}.photo{height:200px}}
+@media(max-width:480px){.grid{gap:9px}.photo{height:165px}.info{padding:11px}.name{font-size:14px}}
+</style>
 </head>
 <body>
-<header>
-  <h2>🔥 Trending E-Commerce Shop</h2>
-</header>
+<div class="top" id="topText"></div>
+<header><div class="nav"><div class="logo">M/S <span>EVA FABRICS</span></div><div class="links"><a href="#products">Products</a><a href="#about">About</a><a href="#contact">Contact</a></div></div></header>
 
-<div class="container">
-  <div class="grid" id="productGrid"></div>
-</div>
+<section class="hero"><div class="heroIn">
+<div><div class="eyebrow">Printed Gauze Fabric & More</div><h1>Quality fabric.<br>Wholesale value.</h1><p id="heroText"></p><a href="#products" style="display:inline-block;background:#111;color:#fff;padding:13px 20px;border-radius:4px;font-weight:bold">পণ্য দেখুন →</a></div>
+<div class="heroBox"><div><b>Minimum Order</b><br><span id="minHero"></span></div></div>
+</div></section>
+
+<section class="wrap" id="products">
+<div class="head"><div class="eyebrow">Our collection</div><h2>Wholesale Fabrics</h2><div style="color:#666">আপনার প্রয়োজনের কাপড় বেছে নিন</div></div>
+<div class="cats" id="cats"></div><div class="grid" id="productsGrid"></div>
+</section>
+
+<section class="about" id="about"><div class="aboutIn"><div><div class="eyebrow">Why EVA Fabrics</div><h2>পাইকারি ব্যবসার জন্য সহজ ও নির্ভরযোগ্য সাপ্লাই</h2><p id="aboutText"></p></div><div class="features"><div class="feature"><b>Minimum Order</b><span id="featureMin"></span></div><div class="feature"><b>Quality Focus</b><span>ব্যবসার উপযোগী কাপড়</span></div><div class="feature"><b>Bulk Supply</b><span>বড় অর্ডারের ব্যবস্থা</span></div><div class="feature"><b>Direct Contact</b><span>অর্ডারের আগে কথা বলুন</span></div></div></div></section>
+<footer id="contact"><div class="foot"><div class="logo">M/S <span>EVA FABRICS</span></div><p id="footerText"></p></div><div style="text-align:center;border-top:1px solid #333;padding:15px;color:#999;font-size:12px">© 2026 M/S EVA FABRICS</div></footer>
+
+<div class="modal" id="modal"><div class="box"><button class="close" onclick="closeOrder()">×</button><div class="eyebrow">Wholesale Order</div><h2 id="orderTitle">অর্ডার করুন</h2><div class="note">Minimum order <b id="orderMin"></b>।</div><form class="form" onsubmit="sendOrder(event)">
+<label>পণ্য<input id="oProduct" readonly></label><label>পরিমাণ (গজ)<input id="oQty" type="number" required></label><label>নাম<input id="oName" required></label><label>মোবাইল<input id="oPhone" required></label><label>দোকান / প্রতিষ্ঠান<input id="oShop"></label><label>ঠিকানা<textarea id="oAddress" rows="3" required></textarea></label><button class="btn">WhatsApp-এ অর্ডার পাঠান</button>
+</form></div></div>
 
 <script>
-  const products = [
-    {name:"Premium Saree", price:1499, img:"https://i.imgur.com/1Q9Z1Zm.jpg"},
-    {name:"Stylish Kameez", price:999, img:"https://i.imgur.com/vz3TqK6.jpg"},
-    {name:"Elegant Dress", price:1799, img:"https://i.imgur.com/Qk8J6lH.jpg"},
-    {name:"Casual Shirt", price:699, img:"https://i.imgur.com/UvQk9eR.jpg"}
-  ];
+/* =========================
+   সহজে EDIT করার জায়গা
+   শুধু এই CONFIG অংশ পরিবর্তন করুন
+   ========================= */
+const CONFIG = {
+  shopName: "M/S EVA FABRICS",
+  whatsapp: ["8801868012173","8801636939661"], // ১ম ও ২য় WhatsApp নম্বর
+  minimumOrder: 100,
+  heroText: "ফ্যাশন ও পোশাক ব্যবসার জন্য মানসম্মত কাপড়ের পাইকারি সরবরাহ। ডিজাইন, কোয়ালিটি ও পরিমাণ অনুযায়ী অর্ডার নিন সহজেই।",
+  aboutText: "M/S EVA FABRICS বিভিন্ন ধরনের printed gauze ও অন্যান্য কাপড় পাইকারি সরবরাহ করে। আপনার প্রয়োজন অনুযায়ী ডিজাইন ও পরিমাণ নিয়ে অর্ডার করতে যোগাযোগ করুন।",
+  products: [
+    {name:"আড়াই হাত বেক্সী", category:"Printed Gauze", price:"পাইকারি মূল্য", image:"images/beksi.jpg"},
+    {name:"দুই হাত সুতি", category:"সুতি", price:"পাইকারি মূল্য", image:"images/cotton.jpg"},
+    {name:"Digital Two Part", category:"Digital", price:"পাইকারি মূল্য", image:"images/digital-two-part.jpg"},
+    {name:"Single Part", category:"Digital", price:"পাইকারি মূল্য", image:"images/single-part.jpg"},
+    {name:"এক কালার বয়েল", category:"Boyel", price:"পাইকারি মূল্য", image:"images/boyel.jpg"},
+    {name:"Poplin", category:"Poplin", price:"পাইকারি মূল্য", image:"images/poplin.jpg"}
+  ]
+};
+/* =========================
+   CONFIG শেষ — নিচের কোডে হাত দেওয়ার দরকার নেই
+   ========================= */
 
-  const grid = document.getElementById("productGrid");
+document.title=CONFIG.shopName;
+document.getElementById("topText").innerHTML=`Wholesale fabric supply • Minimum order: <b>${CONFIG.minimumOrder} গজ</b> • Nationwide delivery`;
+document.getElementById("heroText").textContent=CONFIG.heroText;
+document.getElementById("minHero").textContent=CONFIG.minimumOrder+" গজ থেকে পাইকারি অর্ডার";
+document.getElementById("aboutText").textContent=CONFIG.aboutText;
+document.getElementById("featureMin").textContent=CONFIG.minimumOrder+" গজ থেকে পাইকারি";
+document.getElementById("footerText").innerHTML=`Printed Gauze Fabric & More<br>Wholesale only • Minimum order ${CONFIG.minimumOrder} গজ`;
 
-  products.forEach(p => {
-    const card = document.createElement("a");
-    card.className = "card";
-    card.href = `products.html?name=${encodeURIComponent(p.name)}&price=${p.price}&img=${encodeURIComponent(p.img)}`;
-    card.innerHTML = `
-      <img src="${p.img}">
-      <div class="info">
-        <h4>${p.name}</h4>
-        <p class="price">৳ ${p.price}</p>
-        <button>View</button>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
+const cats=["সব",...new Set(CONFIG.products.map(p=>p.category))];
+const catsEl=document.getElementById("cats");
+cats.forEach((c,i)=>{let b=document.createElement("button");b.className="cat"+(i===0?" active":"");b.textContent=c;b.onclick=()=>filter(c,b);catsEl.appendChild(b)});
+function render(list){document.getElementById("productsGrid").innerHTML=list.map((p,i)=>`<article class="card"><div class="photo">${p.image?`<img src="${p.image}" alt="${p.name}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">`:''}<div class="placeholder" style="${p.image?'display:none':''}">EVA FABRICS</div></div><div class="info"><div class="tag">${p.category}</div><div class="name">${p.name}</div><div class="price">${p.price}</div><div class="min">Minimum: ${CONFIG.minimumOrder} গজ</div><button class="btn" onclick="openOrder(${i})">View / Order</button></div></article>`).join("")}
+function filter(c,b){document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));b.classList.add("active");render(c==="সব"?CONFIG.products:CONFIG.products.filter(p=>p.category===c))}
+render(CONFIG.products);
+function openOrder(i){let p=CONFIG.products[i];document.getElementById("oProduct").value=p.name;document.getElementById("orderTitle").textContent=p.name+" — অর্ডার";document.getElementById("orderMin").textContent=CONFIG.minimumOrder+" গজ";document.getElementById("oQty").min=CONFIG.minimumOrder;document.getElementById("oQty").value=CONFIG.minimumOrder;document.getElementById("modal").classList.add("show")}
+function closeOrder(){document.getElementById("modal").classList.remove("show")}
+function sendOrder(e){e.preventDefault();let q=Number(oQty.value);if(q<CONFIG.minimumOrder){alert("Minimum order "+CONFIG.minimumOrder+" গজ।");return}if(!CONFIG.whatsapp.length){alert("WhatsApp নম্বর সেট করা নেই।");return}let msg=`M/S EVA FABRICS — Wholesale Order\n\nপণ্য: ${oProduct.value}\nপরিমাণ: ${q} গজ\nনাম: ${oName.value}\nমোবাইল: ${oPhone.value}\nদোকান/প্রতিষ্ঠান: ${oShop.value}\nঠিকানা: ${oAddress.value}`;const buttons=CONFIG.whatsapp.map((n,i)=>`${i+1} নম্বর WhatsApp`).join("\n");\nlet choice=prompt("অর্ডার কোন WhatsApp নম্বরে পাঠাবেন?\\n1 = "+CONFIG.whatsapp[0]+"\\n2 = "+CONFIG.whatsapp[1]+"\\n\\n1 অথবা 2 লিখুন:","1");\nlet idx=choice==="2"?1:0;\nwindow.open("https://wa.me/"+CONFIG.whatsapp[idx]+"?text="+encodeURIComponent(msg),"_blank")}
 </script>
 </body>
 </html>
