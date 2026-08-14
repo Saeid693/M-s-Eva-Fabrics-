@@ -81,7 +81,24 @@ function filter(c,b){document.querySelectorAll(".cat").forEach(x=>x.classList.re
 render(CONFIG.products);
 function openOrder(i){let p=CONFIG.products[i];document.getElementById("oProduct").value=p.name;document.getElementById("orderTitle").textContent=p.name+" — অর্ডার";document.getElementById("orderMin").textContent=CONFIG.minimumOrder+" গজ";document.getElementById("oQty").min=CONFIG.minimumOrder;document.getElementById("oQty").value=CONFIG.minimumOrder;document.getElementById("modal").classList.add("show")}
 function closeOrder(){document.getElementById("modal").classList.remove("show")}
-function sendOrder(e){e.preventDefault();let q=Number(oQty.value);if(q<CONFIG.minimumOrder){alert("Minimum order "+CONFIG.minimumOrder+" গজ।");return}if(!CONFIG.whatsapp.length){alert("WhatsApp নম্বর সেট করা নেই।");return}let msg=`M/S EVA FABRICS — Wholesale Order\n\nপণ্য: ${oProduct.value}\nপরিমাণ: ${q} গজ\nনাম: ${oName.value}\nমোবাইল: ${oPhone.value}\nদোকান/প্রতিষ্ঠান: ${oShop.value}\nঠিকানা: ${oAddress.value}`;const buttons=CONFIG.whatsapp.map((n,i)=>`${i+1} নম্বর WhatsApp`).join("\n");\nlet choice=prompt("অর্ডার কোন WhatsApp নম্বরে পাঠাবেন?\\n1 = "+CONFIG.whatsapp[0]+"\\n2 = "+CONFIG.whatsapp[1]+"\\n\\n1 অথবা 2 লিখুন:","1");\nlet idx=choice==="2"?1:0;\nwindow.open("https://wa.me/"+CONFIG.whatsapp[idx]+"?text="+encodeURIComponent(msg),"_blank")}
+function sendOrder(e){
+  e.preventDefault();
+  let q=Number(oQty.value);
+
+  if(q<CONFIG.minimumOrder){
+    alert("Minimum order "+CONFIG.minimumOrder+" গজ।");
+    return;
+  }
+
+  let msg="M/S EVA FABRICS - Wholesale Order\n\n"+
+    "পণ্য: "+oProduct.value+"\n"+
+    "পরিমাণ: "+q+" গজ";
+
+  window.open(
+    "https://wa.me/"+CONFIG.whatsapp[0]+"?text="+encodeURIComponent(msg),
+    "_blank"
+  );
+}
 </script>
 </body>
 </html>
